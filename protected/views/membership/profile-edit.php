@@ -21,167 +21,117 @@ $this->append_js(array(
 
 			<form action="<?php echo $this->uri_path_for('membership-profile-edit'); ?>" method="post" enctype="multipart/form-data" class="checkout" novalidate>
 
-				<div class="left-col-oprek">
 
-					<table>
-						<tbody>
-							<tr>
-								<th>
-									<label for="fullname" style="font-weight: bold;">Nama Lengkap *</label>
-								</th>
-								<td>
-									<input type="text" class="input_full" id="fullname" name="fullname" value="<?php echo $this->fh_default_val('fullname', $member['fullname']); ?>" />
-									<?php echo $this->fh_show_errors('fullname', $_view_validation_errors_); ?>
-								</td>
-							</tr>
+				<div class="row">
+					<div class="col-xs-10 col-sm-5 col-md-5 "><!-- left-col-oprek -->
+						<div class="form-group">
+							<label for="fullname" style="font-weight: bold;">Nama Lengkap *</label>
+							<input type="text" class="input_full" id="fullname" name="fullname" value="<?php echo $this->fh_default_val('fullname', $member['fullname']); ?>" />
+							<p class="help-block">
+							<?php echo $this->fh_show_errors('fullname', $_view_validation_errors_); ?>
+							</p>
+						</div>
 
-							<tr>
-								<th>
-									<label for="email" style="font-weight: bold;">Email *</label>
-								</th>
-								<td>
-									<input type="text" class="input_full" id="email" name="email" value="<?php echo $this->fh_default_val('email', $_SESSION['MembershipAuth']['email']); ?>" />
-									<?php echo $this->fh_show_errors('email', $_view_validation_errors_); ?>
-								</td>
-							</tr>
+						<div class="form-group">
+							<label for="email" style="font-weight: bold;">Email *</label>
+							<input type="text" class="input_full" id="email" name="email" value="<?php echo $this->fh_default_val('email', $_SESSION['MembershipAuth']['email']); ?>" />
+							<p class="help-block">
+							<?php echo $this->fh_show_errors('email', $_view_validation_errors_); ?>
+							</p>
+						</div>
 
-							<tr>
-								<th>
-									<label for="contact_phone" style="font-weight: bold;">Telepon</label>
-								</th>
-								<td>
-									<input type="text" class="input_full" id="contact_phone" name="contact_phone" value="<?php echo $this->fh_default_val('contact_phone', $member['contact_phone']); ?>" />
-								</td>
-							</tr>
+						<div class="form-group">
+							<label for="contact_phone" style="font-weight: bold;">Telepon</label>
+							<input type="text" class="input_full" id="contact_phone" name="contact_phone" value="<?php echo $this->fh_default_val('contact_phone', $member['contact_phone']); ?>" />
+						</div>
 
-							<tr>
-								<th>
-									<label for="province_id" style="font-weight: bold;">Provinsi *</label>
-								</th>
-								<td>
-									<?php
-									echo $this->fh_input_select('province_id', $provinces, array(
-										'default' => $member['province_id'],
-										'id' => 'provinces-dd',
-										'class' => 'input_full'
-									));
-									?>
+						<div class="form-group">
+							<label for="province_id" style="font-weight: bold;">Provinsi *</label>
+							<?php
+							echo $this->fh_input_select('province_id', $provinces, array(
+								'default' => $member['province_id'],
+								'id' => 'provinces-dd',
+								'class' => 'input_full'
+							));
+							?>
+							<p class="help-block">
+							<?php echo $this->fh_show_errors('province_id', $_view_validation_errors_); ?>
+							</p>
+						</div>
+						
+						<div class="form-group">
+							<label for="city_id" style="font-weight: bold;">Kabupaten / Kota Domisili *</label>
+							<?php
+							echo $this->fh_input_select('city_id', $cities, array(
+								'default' => $member['city_id'],
+								'id' => 'cities-dd',
+								'class' => 'input_full'
+							));
+							?>
+							<p class="help-block">
+							<?php echo $this->fh_show_errors('city_id', $_view_validation_errors_); ?>
+							</p>
+						</div>
+						
+						<div class="form-group">
+							<label for="area" style="font-weight: bold;">Area *</label>
+							<input type="text" class="input_full" id="area" name="area" value="<?php echo $this->fh_default_val('area', $member['area']); ?>" />
+						</div>
 
-									<?php echo $this->fh_show_errors('province_id', $_view_validation_errors_); ?>
-								</td>
-							</tr>
+						<div class="form-group">
+							<label for="job-id" style="font-weight: bold;">Pekerjaan *</label>
+							<?php
+							echo $this->fh_input_select('job_id', $jobs, array(
+								'default' => $member['job_id'],
+								'id' => 'job-id',
+								'class' => 'input_full'
+							));
+							?>
+							<p class="help-block">
+							<?php echo $this->fh_show_errors('job_id', $_view_validation_errors_); ?>
+							</p>
+						</div>
+						
+						<div class="form-group">
+							<label for="identity_type" style="font-weight: bold;">Jenis Identitas</label>
+							<?php
+							echo $this->fh_input_select('identity_type', $identity_types, array(
+								'default' => $member['identity_type'],
+								'id' => 'identity_type',
+								'class' => 'input_full'
+							));
+							?>
+						</div>
+						<div class="form-group">
+							<label for="identity_number" style="font-weight: bold;">Nomer Identitas</label>
+							<input type="text" class="input_full" id="identity_number" name="identity_number" value="<?php echo $this->fh_default_val('identity_number', $member['identity_number']); ?>" />
+						</div>
 
-							<tr>
-								<th>
-									<label for="city_id" style="font-weight: bold;">Kabupaten / Kota Domisili *</label>
-								</th>
-								<td>
-									<?php
-									echo $this->fh_input_select('city_id', $cities, array(
-										'default' => $member['city_id'],
-										'id' => 'cities-dd',
-										'class' => 'input_full'
-									));
-									?>
+						<div class="form-group">
+							<label for="birth_place" style="font-weight: bold;">Tempat Lahir</label>
+							<input type="text" class="input_full" id="birth_place" name="birth_place" value="<?php echo $this->fh_default_val('birth_place', $member['birth_place']); ?>" />
+						</div>
 
-									<?php echo $this->fh_show_errors('city_id', $_view_validation_errors_); ?>
-								</td>
-							</tr>
+						<div class="form-group">
+							<label for="birth-date" style="font-weight: bold;">Tanggal Lahir</label>
+							<input type="text" class="input_full" id="birth-date" name="birth_date" value="<?php echo $member['birth_date']; ?>" />
+						</div>
 
-							<tr>
-								<th>
-									<label for="area" style="font-weight: bold;">Area *</label>
-								</th>
-								<td>
-									<input type="text" class="input_full" id="area" name="area" value="<?php echo $this->fh_default_val('area', $member['area']); ?>" />
-								</td>
-							</tr>
+						<div class="form-group">
+							<label for="religion_id" style="font-weight: bold;">Religi</label>
+							<?php
+							echo $this->fh_input_select('religion_id', $religions, array(
+								'default' => $member['religion_id'],
+								'id' => 'religion-dd',
+								'class' => 'input_full'
+							));
+							?>
+						</div>
+					</div>
+				<!-- </div>
 
-							<tr>
-								<th>
-									<label for="job-id" style="font-weight: bold;">Pekerjaan *</label>
-								</th>
-								<td>
-									<?php
-									echo $this->fh_input_select('job_id', $jobs, array(
-										'default' => $member['job_id'],
-										'id' => 'job-id',
-										'class' => 'input_full'
-									));
-									?>
-
-									<?php echo $this->fh_show_errors('job_id', $_view_validation_errors_); ?>
-								</td>
-							</tr>
-
-							<tr>
-								<th>
-									<label for="identity_type" style="font-weight: bold;">Jenis Identitas</label>
-								</th>
-
-								<td>
-								<?php
-								echo $this->fh_input_select('identity_type', $identity_types, array(
-									'default' => $member['identity_type'],
-									'id' => 'identity_type',
-									'class' => 'input_full'
-								));
-								?>
-								</td>
-							</tr>
-
-							<tr>
-								<th>
-									<label for="identity_number" style="font-weight: bold;">Nomer Identitas</label>
-								</th>
-								
-								<td>
-									<input type="text" class="input_full" id="identity_number" name="identity_number" value="<?php echo $this->fh_default_val('identity_number', $member['identity_number']); ?>" />
-								</td>
-							</tr>
-
-							<tr>
-								<th>
-									<label for="birth_place" style="font-weight: bold;">Tempat Lahir</label>
-								</th>
-								
-								<td>
-									<input type="text" class="input_full" id="birth_place" name="birth_place" value="<?php echo $this->fh_default_val('birth_place', $member['birth_place']); ?>" />
-								</td>
-							</tr>
-
-							<tr>
-								<th>
-									<label for="birth-date" style="font-weight: bold;">Tanggal Lahir</label>
-								</th>
-								
-								<td>
-									<input type="text" class="input_full" id="birth-date" name="birth_date" value="<?php echo $member['birth_date']; ?>" />
-								</td>
-							</tr>
-
-							<tr>
-								<th>
-									<label for="religion_id" style="font-weight: bold;">Religi</label>
-								</th>
-								
-								<td>
-								<?php
-								echo $this->fh_input_select('religion_id', $religions, array(
-									'default' => $member['religion_id'],
-									'id' => 'religion-dd',
-									'class' => 'input_full'
-								));
-								?>
-								</td>
-							</tr>
-
-						</tbody>
-					</table>
-
-				</div>		
-
-				<div class="right-col-oprek">
+				<div class="row"> -->
+					<div class="col-xs-10 col-sm-5 col-md-5 "><!-- right-col-oprek -->
 					<fieldset>
 						<legend>Photo Profile</legend>
 						<div class="dt-sc-team">
@@ -260,44 +210,25 @@ $this->append_js(array(
 						<fieldset>
 							<legend>Tambah Informasi Social Media</legend>
 
-							<table>
-								<tbody>
-									<tr>
-										<th>
-											<label for="identity_type" style="font-weight: bold;">Jenis Social Media</label>
-										</th>
+							<div class="form-group">
+								<label for="identity_type" style="font-weight: bold;">Jenis Social Media</label>
+								<?php
+								echo $this->fh_input_select('socmed_type', $socmedias, array(
+									'id' => 'meds-dd',
+									'class' => 'input_full'
+								));
+								?>
+							</div>
+							<div class="form-group">
+								<label for="socmed-account-name" style="font-weight: bold;">Account Name</label>
+								<input type="text" class="input_full" id="socmed-account-name" />
+								<p style="color: #EA7120; font-size: 0.8em;">BUKAN FULLNAME.</p>
+							</div>
 
-										<td>
-
-											<?php
-											echo $this->fh_input_select('socmed_type', $socmedias, array(
-												'id' => 'meds-dd',
-												'class' => 'input_full'
-											));
-											?>
-										</td>
-									</tr>
-
-									<tr>
-										<th>
-											<label for="socmed-account-name" style="font-weight: bold;">Account Name</label>
-										</th>
-
-										<td>
-											<input type="text" class="input_full" id="socmed-account-name" />
-											<p style="color: #EA7120; font-size: 0.8em;">BUKAN FULLNAME.</p>
-										</td>
-									</tr>
-
-									<tr>
-										<th>
-											<label for="socmed-account-url" style="font-weight: bold;">Account Url</label>
-										</th>
-
-										<td>
-											<input type="text" class="input_full" id="socmed-account-url" />
-										</td>
-									</tr>
+							<div class="form-group">
+								<label for="socmed-account-url" style="font-weight: bold;">Account Url</label>
+								<input type="text" class="input_full" id="socmed-account-url" />
+							</div>
 
 								</tbody>
 							</table>
@@ -311,7 +242,9 @@ $this->append_js(array(
 
 					</fieldset>
 
+					</div>
 				</div>
+
 
 				<div style="clear: both; margin-bottom: 25px; background-color:#478BCA; padding: 10px;">
 					<input value="Update Data" type="submit">
